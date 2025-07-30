@@ -1,0 +1,49 @@
+<div x-data="blogList" x-init="fetchPosts()" class="max-w-4xl mx-auto p-6 space-y-6">
+
+  <!-- Category Filter -->
+  <div class="flex gap-4 flex-wrap">
+    <button 
+      class="px-4 py-2 bg-gray-200 rounded hover:bg-blue-400 hover:text-white transition"
+      :class="{ 'bg-blue-600 text-white': category === 'All' }"
+      @click="filterBy('All')"
+    >All</button>
+
+    <template x-for="cat in categories" :key="cat">
+      <button 
+        class="px-4 py-2 bg-gray-200 rounded hover:bg-blue-400 hover:text-white transition"
+        :class="{ 'bg-blue-600 text-white': category === cat }"
+        @click="filterBy(cat)"
+        x-text="cat"
+      ></button>
+    </template>
+  </div>
+
+  <!-- Posts Grid -->
+  <div class="grid gap-6 md:grid-cols-2">
+    <template x-for="post in visiblePosts" :key="post.id">
+      <div 
+        class="border rounded-lg p-4 shadow transition hover:shadow-md"
+        x-show="isVisible(post)"
+        x-transition
+      >
+        <h2 class="text-xl font-bold" x-text="post.title"></h2>
+        <p class="text-sm text-gray-600" x-text="post.excerpt"></p>
+        <a 
+          :href="'/blog/' + post.slug" 
+          class="text-blue-500 hover:underline mt-2 inline-block"
+        >Read more</a>
+      </div>
+    </template>
+  </div>
+
+  <!-- Load More -->
+  <div class="text-center mt-6">
+    <button 
+      x-show="visibleCount < filteredPosts.length"
+      class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      @click="loadMore()"
+    >
+      Load More
+    </button>
+  </div>
+</div>

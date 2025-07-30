@@ -1,0 +1,4 @@
+title: Category
+route: /category/{slug}
+template: category
+layout: layout

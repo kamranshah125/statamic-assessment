@@ -1,0 +1,11 @@
+@extends('layout')
+
+@section('template_content')
+<article class="max-w-3xl mx-auto px-6 py-12 bg-white rounded shadow">
+    <h1 class="text-4xl font-bold mb-4">{{ title }}</h1>
+    <p class="text-sm text-gray-500 mb-6">{{ date format="F j, Y" }}</p>
+    <div class="prose dark:prose-invert">
+        {{ content }}
+    </div>
+</article>
+@endsection
