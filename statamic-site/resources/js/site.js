@@ -1,6 +1,18 @@
 import Alpine from 'alpinejs'
+import Swiper from 'swiper'
+import 'swiper/swiper-bundle.css'
 
 window.Alpine = Alpine
+
+document.addEventListener('DOMContentLoaded', () => {
+  new Swiper('.swiper-container', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  })
+})
+
 
 Alpine.data('blogList', () => ({
   posts: [],

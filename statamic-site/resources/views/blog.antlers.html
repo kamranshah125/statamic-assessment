@@ -7,12 +7,34 @@
   <img src="" alt="No image" class="w-32 h-32 object-cover rounded">
 {{ /if }}
 
-    <div>
+          <div>
+      <div class="text-sm text-gray-600 mb-1">
+        {{ date format="F j, Y" }} · 
+        {{ if category }}
+          {{ category }}
+            <span class="inline-block bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs mr-1">
+              {{ value }}
+            </span>
+          {{ /category }}
+        {{ /if }}
+      </div>
       <h2 class="text-xl font-semibold">
         <a href="{{ url }}" class="text-blue-600 hover:underline">{{ title }}</a>
       </h2>
-      <p class="text-sm text-gray-600">{{ date format="F j, Y" }}</p>
       <p class="mt-2">{{ excerpt }}</p>
+       <div class="author mt-4 flex items-center gap-3">
+        {{ author }}
+          {{ if avatar }}
+            <img src="{{ avatar:url }}" alt="{{ name }}" class="w-10 h-10 rounded-full object-cover">
+          {{ else }}
+            <img src="https://via.placeholder.com/40" alt="{{ name }}" class="w-10 h-10 rounded-full object-cover">
+          {{ /if }}
+          <div>
+            <p class="font-semibold text-sm">{{ name }}</p>
+            <p class="text-xs text-gray-500">{{ email }}</p>
+          </div>
+        {{ /author }}
+      </div>
     </div>
     
   </article>
