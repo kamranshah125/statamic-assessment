@@ -1,7 +1,7 @@
+{{ vite src="resources/css/site.css|resources/js/site.js" }}
 {{ collection:blog }}
   <article class="mb-4 p-4 bg-white rounded shadow flex gap-4 items-start">
-  
-{{ if image }}
+  {{ if image }}
   <img src="{{ image:url }}" alt="{{ title }}" class="w-32 h-32 object-cover rounded">
 {{ else }}
   <img src="" alt="No image" class="w-32 h-32 object-cover rounded">
@@ -19,7 +19,7 @@
         {{ /if }}
       </div>
       <h2 class="text-xl font-semibold">
-        <a href="{{ url }}" class="text-blue-600 hover:underline">{{ title }}</a>
+        <a href="{{ url }}" class="text-green-600 hover:underline">{{ title }}</a>
       </h2>
       <p class="mt-2">{{ excerpt }}</p>
        <div class="author mt-4 flex items-center gap-3">
